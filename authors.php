@@ -1,11 +1,13 @@
 <?php
 	require_once 'dbconfig.php';
+	require_once 'classes/authors.php';
+
 	error_reporting(E_ALL);
 	mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 	ini_set('display_errors', 'on');
 
-	$query = $pdo->query('SELECT * FROM authors');
-	$data = $query->fetchAll(); // возвращает массив содержащий строки
+	$author = new Authors($pdo);
+	$data = $author->show('authors');
 	$result = '';
 	// Разбиваем по строкам
 	foreach($data as $row){
@@ -21,13 +23,12 @@
 		$name = $_POST['name'];
 		$patronymic = $_POST['patronymic'];
 
-		$sql = "INSERT INTO authors(surname,name,patronymic) VALUES (:surname,:name,:patronymic)";
-
-		$prepare = $pdo->prepare($sql);
-		$prepare->execute(['surname'=>$surname, 'name'=>$name, 'patronymic'=>$patronymic]);
+		$author->insert($name,$surname,$patronymic);
 	}
 
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
