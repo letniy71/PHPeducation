@@ -14,10 +14,10 @@
 		return $query->fetchAll(); // возвращает массив содержащий строки
 	}
 
-
-
-	public function delete(){
-
+	public function delete($id){
+		$sql = "DELETE FROM $this->table WHERE id=?";
+		$prepare = $this->pdo->prepare($sql);
+		$prepare->execute([$id]);
 	}
 
 }

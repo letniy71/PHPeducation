@@ -10,4 +10,11 @@ class Authors extends Catalog {
 		$prepare->execute(['surname'=>$surname, 'name'=>$name, 'patronymic'=>$patronymic]);
 	}
 
+	public function edit($id,$name,$surname,$patronymic){
+		$sql = "UPDATE authors SET surname = :surname, name = :name, 'patronymic' = :patronymic WHERE id = :id";
+
+		$prepare = $this->pdo->prepare($sql);
+		$prepare->execute(['surname'=>$surname, 'name'=>$name, 'patronymic'=>$patronymic, 'id' = $id]);
+	}
+
 }
