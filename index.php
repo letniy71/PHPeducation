@@ -16,7 +16,7 @@ $result = '';
 		$result .= '<tbody><tr>';
 		$result .= '<td>' . $row['name'] . '</td>';
 		$result .= '<td>' . $row['description'] . '</td>';
-		$result .= '<td>' . $row['img'] . '</td>';
+		$result .= '<td><img style="width: 10%;" src="' . $row['img'] . '"></td>';
 		$result .= '<td>' . $row['surname'] . ' ' . $row['authors_name'] .' ' . $row['patronymic'] .'</td>';
 		$result .= '<td>' . $row['date'] . '</td>';
 		$result .= '</tr></tbody>';
